@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Poemas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #f4f1ea;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-container h1 {
+            text-align: center;
+            color: #6a1b9a;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .chat-bubble {
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #e8e1f0;
+            color: #4a3c70;
+            max-width: 80%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .user-bubble {
+            align-self: flex-end;
+            background-color: #d1c4e9;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background-color: #4a1378;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4e1f1;
+            border-radius: 10px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            color: #6a1b9a;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: #4a1378;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Bienvenido al rincón de poesía</h1>
+        <div id="chat-output">
+            <div class="chat-bubble">Bienvenido, ¿te gustan los poemas? ¡Responde abajo!</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe tu respuesta aquí...">
+            <button id="send-btn">Enviar</button>
+        </div>
+        <div id="contact-info" class="contact-info" style="display: none;">
+            <p>Gracias por tu interés. Puedes adquirir mi libro de poemas en:</p>
+            <p>📧 <a href="mailto:contacto@poemas.com">contacto@poemas.com</a></p>
+            <p>📱 <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a></p>
+            <p>📞 Teléfono: 123-456-7890</p>
+        </div>
+    </div>
+
+    <script>
+        const sendBtn = document.getElementById('send-btn');
+        const userInput = document.getElementById('user-input');
+        const chatOutput = document.getElementById('chat-output');
+        const contactInfo = document.getElementById('contact-info');
+
+        const responses = [
+            "¡Qué lindo saber que disfrutas de los poemas! ¿Cuál es tu verso favorito?",
+            "Ese verso es muy especial. ¿Sabías que la poesía puede cambiar perspectivas?", 
+            "¡Gracias por compartir tu pasión! Si te interesa, aquí tienes más detalles para adquirir mi libro."
+        ];
+
+        let step = 0;
+
+        sendBtn.addEventListener('click', () => {
+            const userText = userInput.value.trim();
+            if (!userText) return;
+
+            // Add user bubble
+            const userBubble = document.createElement('div');
+            userBubble.classList.add('chat-bubble', 'user-bubble');
+            userBubble.textContent = userText;
+            chatOutput.appendChild(userBubble);
+
+            // Add bot response
+            setTimeout(() => {
+                const botBubble = document.createElement('div');
+                botBubble.classList.add('chat-bubble');
+                botBubble.textContent = responses[step];
+                chatOutput.appendChild(botBubble);
+
+                if (step === responses.length - 1) {
+                    contactInfo.style.display = 'block';
+                }
+
+                step++;
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+            }, 500);
+
+            userInput.value = '';
+        });
+    </script>
+</body>
+</html>

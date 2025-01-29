@@ -182,7 +182,7 @@
 </head>
 <body>
     <div class="chat-container">
-        <h1>Bienvenido al rincón de poesía</h1>
+        <h1>Flores en mi tumba</h1>
         <div id="chat-output">
             <div class="chat-bubble">Bienvenido, ¿te gustan los poemas? ¡Responde abajo!</div>
         </div>
@@ -191,10 +191,10 @@
             <button id="send-btn">Enviar</button>
         </div>
         <div id="contact-info" class="contact-info" style="display: none;">
-            <p>Gracias por tu interés. Puedes adquirir mi libro de poemas en:</p>
-            <p>📧 <a href="mailto:contacto@poemas.com">contacto@poemas.com</a></p>
-            <p>📱 <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a></p>
-            <p>📞 Teléfono: 123-456-7890</p>
+            <p>Gracias por tu interés. Puedes adquirir mi libro de poemas contactándome en:</p>
+            <p>📧 <a href="mailto:aalmaz01@ucm.es">aalmaz01@ucm.es</a></p>
+            <p>📱 <a href="https://wa.me/673731604" target="_blank">WhatsApp</a></p>
+            <p>📞 Teléfono: 673 73 16 04</p>
         </div>
     </div>
 
@@ -259,7 +259,7 @@
 
         let step = 0;
 
-        function numeroAleatorio(max) {
+        function randomNumber(max) {
             return Math.floor(Math.random() * (max + 1));
         }
 
@@ -282,7 +282,9 @@
                     // custom response
                     text = 'pending text';
                 } else {
-                    text = responses[numeroAleatorio(responses.length)]; //todo change for random
+                    let number = randomNumber(responses.length);
+                    text = responses[number]; // choose random
+                    responses.splice(number, 1);
                 }    
 
                 botBubble.textContent = text;

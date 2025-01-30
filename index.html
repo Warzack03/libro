@@ -204,6 +204,8 @@
         const chatOutput = document.getElementById('chat-output');
         const contactInfo = document.getElementById('contact-info');
 
+        const finalAnswer = "Soy Alejandro Almazán y estos poemas pertenecen a mi libro 'Flores en mi tumba'. Si te han gustado y estás interesado en conocer más poemas, puedes escribirme a través del botón de WhatsApp que verás debajo, mandarme un correo a la dirección indicada o, simplemente clickar en el o, si lo prefieres, llamarme al número de teléfono que verás a continuación."
+
         const responses = [
             "Creo en ti cada vez que te imagino. Espero poder verte algún día, no sé si seré capaz, pero te aguardo con toda mi alma. Reconozco ser (solo a veces) un poco melancólico. Me retuerzo en los agasajos de un pasado poco agraciado, una vela que se consume cuanto más te añoro. No obstante, siempre habrá en mí esa esperanza, vaga pero presente, de conocerte en esos cerezos rosados. Aquellos en los que alguna vez fui feliz, en los que (espero) alguna vez te acojan mi corazón. Aguardo ansioso el momento en el que te miraré a los ojos y veré mi alma reflejada en la tuya. En ese instante podré decir que estoy completo, mas un yo sin ti no es sino un muñeco de papel, un cúmulo de sangre y agua sin sentido aparente, una intrincada red de impulsos eléctricos vacíos. Aquí te espero, debajo de tus cerezos, expectante a tu momento de gracia, a tu aclamada llegada.",
             "Te veo tararear tu tango. Parsimoniosos, tus pies giran en torno al fuego como los electrones frente a su núcleo. Dos querubines me abrazan en forma de brazos y me guían en tu baile. Ahora los pájaros, los peces y también tus pecas pisan el compás. Mi musa continúa su danza, buscando versos intrincados, emociones inefables varadas en la orilla de tu boca, palabras vacías que se pierden tras tus ojos glaucos. Observo y el negro vacío abisal, incierto deseo, lo absorbe todo. Quizás te siga soñando, quizás no. Quizás me sueñes algún día, quizás.", 
@@ -280,7 +282,7 @@
                 let text;
                 if (step === 2) {
                     // custom response
-                    text = 'pending text';
+                    text = finalAnswer;
                 } else {
                     let number = randomNumber(responses.length);
                     text = responses[number]; // choose random
